@@ -1,237 +1,75 @@
-# 📦 Stockify - Aplikasi Stok Gudang
+# Glorious Computer – Website & Manual Testing
 
-> **Aplikasi untuk mengelola barang di gudang dengan mudah!** 🚀
+## Tentang Project
 
-Stockify adalah aplikasi web untuk mengelola stok barang di gudang. Cocok untuk toko, warehouse, atau bisnis yang perlu mencatat barang masuk dan keluar.
+Glorious Computer adalah website yang saya buat untuk penjualan laptop, komputer, dan berbagai perangkat elektronik lainnya. Website ini juga menyediakan informasi mengenai layanan servis komputer, laptop, dan printer.
 
-## ✨ Kenapa Pilih Stockify?
+Melalui website ini, pengunjung dapat melihat produk, mencari barang berdasarkan nama atau kategori, melihat detail produk, menggunakan fitur keranjang dan wishlist, serta menghubungi penjual melalui WhatsApp.
 
--   🔐 **Aman** - Ada sistem login untuk melindungi data
--   📱 **Mudah Digunakan** - Tampilan yang simpel dan mudah dipahami
--   💾 **Data Tersimpan** - Semua data barang tersimpan dengan aman
--   📊 **Laporan Lengkap** - Bisa lihat stok barang kapan saja
--   🔍 **Pencarian Cepat** - Mudah cari barang yang diinginkan
+Selain mengembangkan website, saya juga melakukan pengujian secara manual untuk memastikan fitur-fitur yang tersedia berjalan sesuai fungsinya.
 
----
+## Fitur Website
 
-## 🛠️ Yang Digunakan
+- Halaman utama dan informasi perusahaan.
+- Katalog dan kategori produk.
+- Pencarian produk.
+- Filter dan pengurutan produk.
+- Detail produk.
+- Shopping cart.
+- Wishlist.
+- Login dan registrasi pelanggan.
+- Integrasi WhatsApp.
+- Chatbot.
+- Informasi layanan servis komputer.
 
-| Teknologi        | Fungsi                  |
-| ---------------- | ----------------------- |
-| **Laravel**      | Sistem utama aplikasi   |
-| **MySQL**        | Tempat menyimpan data   |
-| **Tailwind CSS** | Membuat tampilan cantik |
+## Manual Testing
 
----
+Pengujian dilakukan secara manual menggunakan Google Chrome. Setiap fitur dicoba secara langsung untuk melihat apakah hasilnya sudah sesuai dengan yang diharapkan.
 
-## 🚀 Cara Install
+Beberapa pengujian yang dilakukan meliputi:
 
-### Yang Perlu Dipersiapkan
+- Homepage dan navigasi.
+- Product catalog dan product detail.
+- Search, filter, dan sorting.
+- Shopping cart dan wishlist.
+- Login dan registration.
+- Form validation.
+- WhatsApp integration.
+- Chatbot.
+- Navigation links.
 
-Pastikan komputer sudah ada:
+## Testing Tools
 
--   **PHP** versi 8.1 atau lebih baru ✅
--   **Composer** (untuk install Laravel) ✅
--   **MySQL** (tempat menyimpan data) ✅
--   **Git** (untuk download kode) ✅
+- Jira – Mengelola test case dan bug report.
+- Microsoft Excel – Membuat dan mencatat hasil manual testing.
+- Google Chrome – Menjalankan pengujian website.
+- GitHub – Menyimpan source code dan dokumentasi project.
+- Vercel – Deployment website.
 
-### Langkah Install
 
-**1. Download aplikasi**
+Selama pengujian, saya menemukan beberapa masalah, di antaranya:
 
-```bash
-git clone https://github.com/GeishaMagangJogja/StockifyApp.git
-cd StockifyApp
-```
+1. Halaman detail produk menampilkan HTTP 500.
+2. Tombol wishlist pada katalog tidak merespons klik.
+3. Produk dengan stok kosong tetap menampilkan notifikasi berhasil ditambahkan ke keranjang.
+4. Link media sosial mengarah kembali ke homepage.
+5. Kartu layanan tidak mengarah ke informasi layanan yang sesuai.
+6. Form kontak tidak menampilkan validasi ketika dikirim dalam keadaan kosong.
 
-**2. Install komponen Laravel**
+Temuan tersebut dicatat dalam Jira untuk dokumentasi dan tindak lanjut perbaikan.
 
-```bash
-composer install
-```
+## Project Links
 
-**3. Setup konfigurasi**
+- **Live Website:** https://gloriouscomp.vercel.app/
+- **GitHub Repository:** https://github.com/TiaraSky/glorious-computer-website-and-QA-glorius-computer
+- **Jira Project:** https://ruthtiarasinaga123.atlassian.net/jira/software/projects/GCQA/boards/3
 
-```bash
-cp .env.example .env
-php artisan key:generate
-```
+## Project Status
 
-**4. Setting database**
-Buka file `.env` dan isi:
+Website sudah dibuat dan dipublikasikan. Pengujian manual masih dikembangkan secara bertahap, termasuk pencatatan bug dan pengujian ulang.
 
-```
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=stockify
-DB_USERNAME=root
-DB_PASSWORD=
-```
+## Author
 
-**5. Buat tabel database**
+**Tiara Sky**
 
-```bash
-php artisan migrate:fresh --seed
-```
-
-**6. Jalankan aplikasi**
-
-```bash
-php artisan serve
-```
-
-Buka browser ke: http://127.0.0.1:8000 🎉
-
----
-
-## 📁 Struktur Folder
-
-```
-stockify-backend/
-├── app/
-│   ├── Http/Controllers/     # Pengendali halaman
-│   ├── Models/              # Model data
-│   └── Services/           # Logika bisnis
-├── database/
-│   ├── migrations/         # Struktur tabel
-│   └── seeders/           # Data awal
-├── routes/
-│   └── api.php            # Alamat halaman
-└── resources/
-    └── css/              # File tampilan
-```
-
----
-
-## 🔗 Alamat Halaman (API)
-
-### Login & Daftar
-
-| Cara | Alamat               | Fungsi            |
-| ---- | -------------------- | ----------------- |
-| POST | `/api/auth/register` | Daftar akun baru  |
-| POST | `/api/auth/login`    | Masuk ke aplikasi |
-
-### Kelola Barang
-
-| Cara   | Alamat               | Fungsi              |
-| ------ | -------------------- | ------------------- |
-| GET    | `/api/products`      | Lihat semua barang  |
-| POST   | `/api/products`      | Tambah barang baru  |
-| GET    | `/api/products/{id}` | Lihat detail barang |
-| PUT    | `/api/products/{id}` | Edit barang         |
-| DELETE | `/api/products/{id}` | Hapus barang        |
-
-### Kelola Kategori
-
-| Cara   | Alamat                 | Fungsi          |
-| ------ | ---------------------- | --------------- |
-| GET    | `/api/categories`      | Lihat kategori  |
-| POST   | `/api/categories`      | Tambah kategori |
-| PUT    | `/api/categories/{id}` | Edit kategori   |
-| DELETE | `/api/categories/{id}` | Hapus kategori  |
-
-### Profile Pengguna
-
-| Cara | Alamat         | Fungsi        |
-| ---- | -------------- | ------------- |
-| GET  | `/api/profile` | Lihat profile |
-
----
-
-## 🔐 Sistem Keamanan
-
-Stockify menggunakan sistem token untuk keamanan.
-
-### Cara menggunakan:
-
-1. **Login** dulu untuk dapat token
-2. **Masukkan token** di setiap request
-
-### Contoh:
-
-```bash
-# Login dulu
-curl -X POST http://localhost:8000/api/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{"email":"user@example.com","password":"password"}'
-
-# Akses data barang (pakai token)
-curl -X GET http://localhost:8000/api/products \
-  -H "Authorization: Bearer token-yang-didapat"
-```
-
----
-
-## 🧪 Testing
-
-### Jalankan test:
-
-```bash
-# Test semua
-php artisan test
-
-# Test file tertentu
-php artisan test tests/Feature/ProductControllerTest.php
-```
-
----
-
-## 🚢 Pasang di Server
-
-### Persiapan production:
-
-```bash
-# Optimasi untuk server
-composer install --optimize-autoloader --no-dev
-php artisan config:cache
-php artisan route:cache
-```
-
-### Setting server:
-
-```env
-APP_ENV=production
-APP_DEBUG=false
-APP_URL=https://website-kamu.com
-
-# Database server
-DB_HOST=alamat-database-server
-DB_DATABASE=stockify_production
-```
-
----
-
-## 🤝 Kontribusi
-
-Mau bantu develop? Silakan!
-
-### Caranya:
-
-1. **Fork** repository ini
-2. **Buat branch** baru: `git checkout -b fitur-baru`
-3. **Commit** perubahan: `git commit -m "tambah fitur baru"`
-4. **Push**: `git push origin fitur-baru`
-5. **Buat Pull Request**
-
----
-
-## 📝 Tips Development
-
-### Command berguna:
-
-```bash
-# Buat model baru dengan controller
-php artisan make:model NamaBarang -mcr
-
-# Hapus semua cache
-php artisan optimize:clear
-
-# Debug mode
-php artisan tinker
-```
-
----
-
-
+Website Developer | Manual QA Tester
