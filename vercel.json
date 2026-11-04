@@ -1,0 +1,58 @@
+{
+    "version": 2,
+    "framework": null,
+    "fluid": false,
+    "builds": [
+        {
+            "src": "api/index.php",
+            "use": "vercel-php@0.7.4",
+            "config": {
+                "php.ini": "api/php.ini"
+            }
+        },
+        {
+            "src": "public/**",
+            "use": "@vercel/static"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/build/(.*)",
+            "dest": "/public/build/$1"
+        },
+        {
+            "src": "/static/(.*)",
+            "dest": "/public/static/$1"
+        },
+        {
+            "src": "/(.*\\.(?:css|js|png|jpg|jpeg|gif|svg|ico|ttf|woff|woff2|eot|webp|avif|txt|json|xml|webmanifest))$",
+            "dest": "/public/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/api/index.php"
+        }
+    ],
+    "env": {
+        "APP_ENV": "production",
+        "APP_DEBUG": "true",
+        "APP_CONFIG_CACHE": "/tmp/config.php",
+        "APP_EVENTS_CACHE": "/tmp/events.php",
+        "APP_PACKAGES_CACHE": "/tmp/packages.php",
+        "APP_ROUTES_CACHE": "/tmp/routes.php",
+        "APP_SERVICES_CACHE": "/tmp/services.php",
+        "VIEW_COMPILED_PATH": "/tmp/views",
+        "SSR_TEMP_PATH": "/tmp/ssr",
+        "APP_STORAGE_PATH": "/tmp/storage",
+        "CACHE_DRIVER": "array",
+        "LOG_CHANNEL": "stderr",
+        "SESSION_DRIVER": "cookie",
+        "SESSION_SECURE_COOKIE": "true",
+        "QUEUE_CONNECTION": "sync",
+        "FILESYSTEM_DISK": "s3",
+        "FILESYSTEM_PUBLIC_DRIVER": "s3",
+        "AWS_DEFAULT_REGION": "eu-north-1",
+        "AWS_USE_PATH_STYLE_ENDPOINT": "true",
+        "NODE_PATH": "node"
+    }
+}

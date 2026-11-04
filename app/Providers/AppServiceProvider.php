@@ -1,0 +1,51 @@
+<?php
+
+namespace App\Providers;
+
+use App\Database\PostgresConnection;
+use App\Repositories\SupplierRepository;
+use Illuminate\Database\Connection;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\ServiceProvider;
+
+// Repositories & Interfaces
+use App\Repositories\UserRepository;
+use App\Repositories\ProductRepository;
+use App\Repositories\CategoryRepository;
+use App\Repositories\ProductAttributeRepository;
+use App\Repositories\StockTransactionRepository;
+
+use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Repositories\Interfaces\ProductRepositoryInterface;
+use App\Repositories\Interfaces\CategoryRepositoryInterface;
+use App\Repositories\Interfaces\ProductAttributeRepositoryInterface;
+use App\Repositories\Interfaces\StockTransactionRepositoryInterface;
+use App\Repositories\Interfaces\SupplierRepositoryInterface;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function register(): void
+    {
+        Connection::resolverFor('pgsql', function ($connection, $database, $prefix, $config) {
+            return new PostgresConnection($connection, $database, $prefix, $config);
+        });
+
+        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
+        $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
+        $this->app->bind(SupplierRepositoryInterface::class, SupplierRepository::class);
+        $this->app->bind(ProductAttributeRepositoryInterface::class, ProductAttributeRepository::class);
+        $this->app->bind(StockTransactionRepositoryInterface::class,  StockTransactionRepository::class);
+        $this->app->bind(
+        ProductRepositoryInterface::class,
+        ProductRepository::class
+    );
+    }
+
+    public function boot(): void
+    {
+        if (env('VERCEL') || env('APP_ENV') === 'production') {
+            URL::forceScheme('https');
+        }
+    }
+}
