@@ -87,3 +87,8 @@ Saya menggunakan Jira untuk mengelola proses pengujian website Glorious Computer
 **Jira Project:** [Glorious Computer QA](https://ruthtiarasinaga123.atlassian.net/jira/software/projects/GCQA/boards/3)
 
 Pengujian mencakup homepage, authentication, product catalog, shopping cart, wishlist, dan layanan pelanggan.
+## Bug Report Documentation
+
+Selama proses manual testing, saya menemukan beberapa masalah pada website Glorious Computer. Setiap temuan dicatat berdasarkan hasil pengujian, dilengkapi deskripsi masalah, expected result, actual result, dan priority.
+
+Dokumentasi bug report tersedia dalam file Excel pada sheet Bug Reports.
