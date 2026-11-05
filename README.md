@@ -73,3 +73,11 @@ Website sudah dibuat dan dipublikasikan. Pengujian manual masih dikembangkan sec
 **Tiara Sky**
 
 Website Developer | Manual QA Tester
+
+## Jira Project
+
+Saya menggunakan Jira untuk mengelola proses pengujian website Glorious Computer, mulai dari pembagian Epic, pencatatan Test Case, pemantauan status pengujian, hingga dokumentasi Bug Report.
+
+**Jira Project:** [Glorious Computer QA](https://ruthtiarasinaga123.atlassian.net/jira/software/projects/GCQA/boards/3)
+
+Pengujian mencakup homepage, authentication, product catalog, shopping cart, wishlist, dan layanan pelanggan.
