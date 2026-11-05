@@ -76,6 +76,12 @@ Website Developer | Manual QA Tester
 
 ## Jira Project
 
+## Manual Testing Documentation
+
+Dokumentasi pengujian manual website Glorious Computer dibuat menggunakan Microsoft Excel. File ini berisi test case, langkah pengujian, expected result, actual result, dan status pengujian.
+
+**Download:** [Glorious Computer Manual Testing](Glorious-Computer-Manual-Testing.xlsx)
+
 Saya menggunakan Jira untuk mengelola proses pengujian website Glorious Computer, mulai dari pembagian Epic, pencatatan Test Case, pemantauan status pengujian, hingga dokumentasi Bug Report.
 
 **Jira Project:** [Glorious Computer QA](https://ruthtiarasinaga123.atlassian.net/jira/software/projects/GCQA/boards/3)
